@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="560.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.csc325_firebase_webview_auth.view.Splash">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f4747" height="560.0" stroke="BLACK" strokeType="INSIDE" width="850.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#723231" height="380.0" layoutX="139.0" layoutY="90.0" stroke="BLACK" strokeType="INSIDE" width="573.0" />
+      <Label layoutX="276.0" layoutY="207.0" prefHeight="146.0" prefWidth="300.0" text="Welcome!">
+         <font>
+            <Font size="63.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
