@@ -1,0 +1,58 @@
+package com.example.csc325_firebase_webview_auth.view;
+
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
+import javafx.stage.Stage;
+import org.w3c.dom.Text;
+
+import java.io.IOException;
+
+public class LogInController {
+    @FXML
+    private Button LogInButton;
+    @FXML
+    private Button SignUpButton;
+    @FXML
+    private Button PasswordButton;
+    @FXML
+    private TextField UserName;
+    @FXML
+    private PasswordField PassWord;
+
+//METHOD TO GO TO THE REGISTER PAGE
+    @FXML
+    private void GoToSignUp(){
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/files/Register.fxml"));
+            Parent root = loader.load();
+            Stage stage = (Stage) LogInButton.getScene().getWindow();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    //METHOD TO VALIDATE THE LOGIN AND ACCESS THE PROGRAM
+    @FXML
+    private void LogInValidation(){
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/files/AccessFBView.fxml"));
+            Parent root = loader.load();
+            Stage stage = (Stage) LogInButton.getScene().getWindow();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+}
