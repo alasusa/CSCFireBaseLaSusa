@@ -1,0 +1,92 @@
+package com.example.csc325_firebase_webview_auth.view;
+
+import javafx.animation.ParallelTransition;
+import javafx.animation.RotateTransition;
+import javafx.animation.SequentialTransition;
+import javafx.animation.TranslateTransition;
+import javafx.scene.Scene;
+import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Font;
+import javafx.util.Duration;
+
+public class Splash
+{
+
+    static Scene splash;
+    static Rectangle rect = new Rectangle();
+    final private Pane pane;
+    final private SequentialTransition seqT;
+
+    public Splash()
+    {
+        pane = new Pane();
+        pane.setStyle("-fx-background-color:brown");
+
+        splash = new Scene(pane);
+        seqT = new SequentialTransition();
+    }
+
+    //***********
+    // SPLASH SCREEN AND ANIMATION CODE SOURCED FROM STACK OVERFLOW
+    //************
+    public void show()
+    {
+        int scale = 30;
+        int dur = 800;
+        rect = new Rectangle(100 - 2 * scale, 20, scale, scale);
+        rect.setFill(Color.AQUAMARINE);
+
+        int[] rotins = {scale, 2 * scale, 3 * scale, 4 * scale, 5 * scale, -6 * scale, -5 * scale, -4 * scale, -3 * scale, -2 * scale};
+        int x, y;
+        for (int i : rotins) {
+            RotateTransition rt = new RotateTransition(Duration.millis(dur), rect);
+            rt.setByAngle(i / Math.abs(i) * 90);
+            rt.setCycleCount(1);
+            TranslateTransition pt = new TranslateTransition(Duration.millis(dur), rect);
+            x = (int) (rect.getX() + Math.abs(i));
+            y = (int) (rect.getX() + Math.abs(i) + (Math.abs(i) / i) * scale);
+            pt.setFromX(x);
+            pt.setToX(y);
+            ParallelTransition pat = new ParallelTransition();
+            pat.getChildren().addAll(pt, rt);
+            pat.setCycleCount(1);
+            seqT.getChildren().add(pat);
+        }
+        seqT.play();
+        seqT.setNode(rect);
+        Label label = new Label("Welcome!");
+        label.setFont(new Font("Verdana", 40));
+        label.setStyle("-fx-text-fill:white");
+        label.setLayoutX(140);
+        label.setLayoutY(70);
+        Label lab = new Label("Launching...");
+        lab.setFont(new Font("Times New Roman", 10));
+        lab.setStyle("-fx-text-fill:white");
+        lab.setLayoutX(170);
+        lab.setLayoutY(180);
+        Image image = new Image("https://s3.amazonaws.com/media.eremedia.com/uploads/2012/08/24111405/stackoverflow-logo-700x467.png");
+        ImageView iv = new ImageView(image);
+        iv.setFitWidth(32);
+        iv.setFitHeight(32);
+        iv.setX(174);
+        iv.setY(130);
+        pane.getChildren().addAll(rect, label, lab, iv);
+
+        seqT.play();
+    }
+
+    public Scene getSplashScene()
+    {
+        return splash;
+    }
+
+    public SequentialTransition getSequentialTransition()
+    {
+        return seqT;
+    }
+}
